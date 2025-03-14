@@ -1,0 +1,10 @@
+accelerate
+fastapi
+numpy
+pydantic
+pydantic_core
+requests
+uvicorn
+transformers
+
+
