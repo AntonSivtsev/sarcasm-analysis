@@ -53,6 +53,14 @@ async def predict_answer(user_input: UserInput):
     try:
         text = user_input.user_input
         output = pipe(text)
+
+        
+        label_map = {
+            "LABEL_0": "NOT_SARCASM",
+            "LABEL_1": "SARCASM"
+        }
+        output[0]['label'] = label_map.get(output[0]['label'], output[0]['label'])
+ 
         return ModelOutput(label=output[0]['label'], score=output[0]['score'])
     except Exception as e:
         logger.error(f"Ошибка: {e}")
